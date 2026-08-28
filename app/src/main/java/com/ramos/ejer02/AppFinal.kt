@@ -8,4 +8,5 @@ fun main() {
     println("Cantidad de cursos:")
     val cantidadCursos = readLine()!!.toInt()
 
+
 }
