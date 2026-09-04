@@ -40,6 +40,14 @@ fun main() {
         else -> 0.0
     }
 
+    println("Coloque la cantidad de aforo:")
+    val aforoMaximo = readLine()!!.toInt()
+
+    println("\nCantidad de estudiantes ya inscritos en el turno $turno:")
+    val inscritosActuales = readLine()!!.toInt()
+
+    val cuposDisponibles = aforoMaximo - inscritosActuales
+
     println("\nCategoría (ordinario/becado):")
     val categoria = readLine()!!.lowercase()
 
@@ -111,5 +119,13 @@ fun main() {
 
     println("igv (18%): ${"%.2f".format(igv)}")
     println("total final con igv: ${"%.2f".format(totalFinal)}")
+
+    println("aforo maximo del turno: $aforoMaximo")
+    println("inscritos actuales: $inscritosActuales")
+    if (inscritosActuales >= aforoMaximo) {
+        println("El turno $turno ya alcanzó su aforo máximo. No hay cupos disponibles.")
+    } else {
+        println("cupos disponibles: $cuposDisponibles")
+    }
 
 }
