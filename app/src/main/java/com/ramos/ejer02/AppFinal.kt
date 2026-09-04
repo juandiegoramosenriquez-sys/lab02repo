@@ -40,6 +40,11 @@ fun main() {
         else -> 0.0
     }
 
+    println("\nCategoría (ordinario/becado):")
+    val categoria = readLine()!!.lowercase()
+
+    val matricula: Int = if (categoria == "becado") 0 else 300
+
 
     println("\nResultado final")
     println("Estudiante: $nombre")
@@ -65,6 +70,8 @@ fun main() {
     val montoDescuento = totalPagar * descuento
     val totalConDescuento = totalPagar - montoDescuento
 
+    val totalConMatricula = totalConDescuento + matricula
+
     val cargaAcademica: String
 
     if (totalCreditos <= 12) {
@@ -77,13 +84,13 @@ fun main() {
 
     val numeroCuotas: Int
 
-    if (totalConDescuento > 2500) {
+    if (totalConMatricula > 2500) {
         numeroCuotas = 3
     } else {
         numeroCuotas = 2
     }
 
-    val montoCuota = totalConDescuento / numeroCuotas
+    val montoCuota = totalConMatricula / numeroCuotas
 
     println("\ncursos: $cantidadCursos")
     println("total de creditos: $totalCreditos")
@@ -94,5 +101,9 @@ fun main() {
     println("turno: $turno")
     println("descuento aplicado: ${(descuento * 100).toInt()}%")
     println("total con descuento: $totalConDescuento")
+
+    println("categoria: $categoria")
+    println("matricula: $matricula")
+    println("total con matricula: $totalConMatricula")
 
 }
