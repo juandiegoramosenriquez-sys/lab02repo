@@ -72,6 +72,9 @@ fun main() {
 
     val totalConMatricula = totalConDescuento + matricula
 
+    val igv = totalConMatricula * 0.18
+    val totalFinal = totalConMatricula + igv
+
     val cargaAcademica: String
 
     if (totalCreditos <= 12) {
@@ -84,13 +87,13 @@ fun main() {
 
     val numeroCuotas: Int
 
-    if (totalConMatricula > 2500) {
+    if (totalFinal > 2500) {
         numeroCuotas = 3
     } else {
         numeroCuotas = 2
     }
 
-    val montoCuota = totalConMatricula / numeroCuotas
+    val montoCuota = totalFinal / numeroCuotas
 
     println("\ncursos: $cantidadCursos")
     println("total de creditos: $totalCreditos")
@@ -105,5 +108,8 @@ fun main() {
     println("categoria: $categoria")
     println("matricula: $matricula")
     println("total con matricula: $totalConMatricula")
+
+    println("igv (18%): ${"%.2f".format(igv)}")
+    println("total final con igv: ${"%.2f".format(totalFinal)}")
 
 }
