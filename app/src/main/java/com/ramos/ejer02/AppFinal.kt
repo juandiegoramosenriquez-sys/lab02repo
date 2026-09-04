@@ -28,8 +28,18 @@ fun main() {
         costos.add(costo)
 
         curso++
-
     }
+
+    println("\nTurno (mañana/tarde/noche):")
+    val turno = readLine()!!.lowercase()
+
+    val descuento: Double = when (turno) {
+        "mañana" -> 0.10
+        "tarde" -> 0.15
+        "noche" -> 0.20
+        else -> 0.0
+    }
+
 
     println("\nResultado final")
     println("Estudiante: $nombre")
@@ -51,6 +61,10 @@ fun main() {
         j++
     }
 
+
+    val montoDescuento = totalPagar * descuento
+    val totalConDescuento = totalPagar - montoDescuento
+
     val cargaAcademica: String
 
     if (totalCreditos <= 12) {
@@ -63,18 +77,22 @@ fun main() {
 
     val numeroCuotas: Int
 
-    if (totalPagar > 2500) {
+    if (totalConDescuento > 2500) {
         numeroCuotas = 3
     } else {
         numeroCuotas = 2
     }
 
-    val montoCuota = totalPagar / numeroCuotas
+    val montoCuota = totalConDescuento / numeroCuotas
 
     println("\ncursos: $cantidadCursos")
     println("total de creditos: $totalCreditos")
     println("total a pagar: $totalPagar")
     println("carga academica: $cargaAcademica")
     println("forma de pago: $numeroCuotas cuotas de $montoCuota cada una")
+
+    println("turno: $turno")
+    println("descuento aplicado: ${(descuento * 100).toInt()}%")
+    println("total con descuento: $totalConDescuento")
 
 }
